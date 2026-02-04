@@ -235,3 +235,7 @@ pyrightconfig.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,macos,visualstudiocode,dotenv
+
+/static/js/utils.md
+/templates/theory-notes
+snippets.txt
