@@ -135,7 +135,7 @@ Handled errors include:
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```bash
 .
