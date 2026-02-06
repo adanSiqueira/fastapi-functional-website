@@ -65,6 +65,21 @@ async def home(request: Request, db: Annotated[AsyncSession, Depends(get_db)]):
         {"posts": posts, "title": "Home"},
     )
 
+@app.get("/login", include_in_schema=False)
+async def login_page(request: Request):
+    return templates.TemplateResponse(
+        request,
+        "login.html",
+        {"title": "Login"}
+    )
+
+@app.get("/register", include_in_schema=False)
+async def register_page(request: Request):
+    return templates.TemplateResponse(
+        request,
+        "register.html",
+        {"title": "Register"}
+    )
 
 @app.get("/posts/{post_id}", include_in_schema=False, name="get_post_page")
 async def post_page(request: Request, post_id: int, db: Annotated[AsyncSession, Depends(get_db)]):
