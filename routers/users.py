@@ -225,7 +225,6 @@ async def delete_user(user_id: int, current_user: CurrentUser, db: Annotated[Asy
     if old_filename:
         delete_profile_image(old_filename)
 
-
 ## Upload Profile Picture Endpoint
 @router.patch("/{user_id}/picture", response_model=UserPrivateResponse)
 async def upload_profile_picture(
