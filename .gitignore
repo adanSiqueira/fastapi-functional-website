@@ -1,6 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,macos,visualstudiocode,dotenv
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,macos,visualstudiocode,dotenv
-
+populate_db.py
+/tests/populate_db.md
 ### dotenv ###
 .env
 

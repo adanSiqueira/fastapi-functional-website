@@ -28,7 +28,7 @@ class Token(BaseModel):
     token_type: str
 
 class PostBase(BaseModel):
-    title: str = Field(min_length = 0, max_lenth=100)
+    title: str | None = Field(default = None, min_length = 0, max_length=100)
     content: str = Field(min_length = 1)
 
 class PostCreate(PostBase):
