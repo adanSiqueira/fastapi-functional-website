@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     mail_username: str = ""
     mail_password: SecretStr = SecretStr("")
     mail_from: str = "noreply@example.com"
-    mail_use_tls: bool = True
+    mail_use_tls: bool = False
 
     frontend_url: str = "http://localhost:8000"
     # This value is intentionally defined as a static configuration (via .env) rather than being derived from incoming requests.

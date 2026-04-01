@@ -25,6 +25,7 @@ async def send_email(
         port=settings.mail_port,
         username=settings.mail_username,
         password=settings.mail_password.get_secret_value() or None,
+        start_tls=True,
         use_tls=settings.mail_use_tls,
     )
 
