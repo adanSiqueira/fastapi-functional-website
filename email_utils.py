@@ -44,7 +44,7 @@ async def send_password_reset_email(to_email: str, username: str, token: str) ->
     This link will expire in {settings.reset_token_expire_minutes} minutes."""
 
     template = templates.env.get_template("email/password_reset.html")
-    html_content = template.render(reset_link=reset_url, username=username)
+    html_content = template.render(reset_url=reset_url, username=username)
 
 
     await send_email(
