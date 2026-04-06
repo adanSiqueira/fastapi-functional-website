@@ -6,6 +6,8 @@ notes.txt
 ### dotenv ###
 .env
 
+/populate_images
+
 ### User Uploaded Media Files ###
 media/
 

@@ -168,7 +168,7 @@ async def reset_password(
     reset_token = result.scalars().first()
 
     # 2. Verify if token exists and is not expired
-    if not reset_token or reset_token.expires_at.replace(tzinfo=UTC) < datetime.now(UTC):
+    if not reset_token or reset_token.expires_at < datetime.now(UTC):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Invalid or expired reset token."
@@ -198,7 +198,7 @@ async def reset_password(
 
     return {"message": "Password updated successfully."}
 
-@router.post("/me/password", status_code=status.HTTP_200_OK)
+@router.patch("/me/password", status_code=status.HTTP_200_OK)
 async def change_password(
     request_data: ChangePasswordRequest,
     current_user: CurrentUser,
