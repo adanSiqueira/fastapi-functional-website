@@ -26,6 +26,12 @@ class Settings(BaseSettings):
     mail_from: str = "noreply@example.com"
     mail_use_tls: bool = False
 
+    s3_bucket_name: str
+    s3_region: str = "us-east-1"
+    s3_access_key_id: SecretStr | None = None
+    s3_secret_access_key: SecretStr | None = None
+    s3_endpoint_url: str | None = None
+
     frontend_url: str = "http://localhost:8000"
     # This value is intentionally defined as a static configuration (via .env) rather than being derived from incoming requests.
     #
