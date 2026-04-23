@@ -41,8 +41,8 @@ async def get_posts(
 
     has_more = skip + len(posts) < total
 
-    if not posts:
-        raise HTTPException(status_code=404)
+    # if not posts:
+    #     raise HTTPException(status_code=404)
 
     return PaginatedPostsResponse(
         posts = [PostResponse.model_validate(post) for post in posts],

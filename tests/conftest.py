@@ -71,7 +71,7 @@ async def db_session (
         join_transaction_mode="create_savepoint"
     )
 
-    async with test_async_session as session:
+    async with test_async_session() as session:
         try:
             yield session
         finally:
@@ -84,7 +84,11 @@ async def db_session (
 def mocked_aws():
     with mock_aws():
         s3 = boto3.client("s3", region_name="us-east-2")
-        s3.create_bucket(Bucket=os.environ["S3_BUCKET_NAME"])
+        s3.create_bucket(
+            Bucket=os.environ["S3_BUCKET_NAME"],
+            CreateBucketConfiguration={
+                "LocationConstraint": "us-east-2"
+            })
         yield s3
 
 @pytest.fixture
@@ -146,4 +150,4 @@ async def login_user (
     return response.json()["access_token"]
 
 def auth_header(token:str) -> dict[str, str]:
-    return {"Authorization": f"Bearee {token}"}
+    return {"Authorization": f"Bearer {token}"}
