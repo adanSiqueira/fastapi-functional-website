@@ -14,6 +14,7 @@ from database import (
 from routers import posts, users
 
 from fastapi.exceptions import RequestValidationError
+from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.exceptions import HTTPException as StarletteHTTPException
@@ -211,9 +212,10 @@ async def general_http_exception_handler (request: Request,
 async def validation_exception_handler (request: Request, exception: RequestValidationError):
     
     if request.url.path.startswith('/api'):
-        return await http_exception_handler (
-            request, exception
-        )
+        # return await http_exception_handler (
+        #     request, exception
+        # )
+        return await request_validation_exception_handler(request, exception)
     
     return templates.TemplateResponse(
         request,
