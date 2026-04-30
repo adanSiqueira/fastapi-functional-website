@@ -1,6 +1,7 @@
 import asyncio
 from logging.config import fileConfig
 
+from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
@@ -64,15 +65,33 @@ def do_run_migrations(connection: Connection) -> None:
         context.run_migrations()
 
 
+# async def run_async_migrations() -> None:
+#     """In this scenario we need to create an Engine
+#     and associate a connection with the context.
+
+#     """
+
+#     connectable = async_engine_from_config(
+#         config.get_section(config.config_ini_section, {}),
+#         prefix="sqlalchemy.",
+#         poolclass=pool.NullPool,
+#     )
+
+#     async with connectable.connect() as connection:
+#         await connection.run_sync(do_run_migrations)
+
+#     await connectable.dispose()
+
+# In the function above --async def run_async_migrations() -- ,
+# the URL is set via config.set_main_option("sqlalchemy.url", settings.database_url), 
+# but then run_async_migrations() builds the engine from async_engine_from_config 
+# which reads from the config INI section — not from the value you just set with set_main_option.
+# So it's likely picking up a stale or empty URL from alembic.ini instead of the .env.
+# Due to thtat, I'll replace async_engine_from_config with a direct engine creation using the URL:
+
 async def run_async_migrations() -> None:
-    """In this scenario we need to create an Engine
-    and associate a connection with the context.
-
-    """
-
-    connectable = async_engine_from_config(
-        config.get_section(config.config_ini_section, {}),
-        prefix="sqlalchemy.",
+    connectable = create_async_engine(
+        settings.database_url,
         poolclass=pool.NullPool,
     )
 
