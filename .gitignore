@@ -5,7 +5,7 @@ populate_db.py
 /notes
 ### dotenv ###
 .env
-
+/docs/vps-deploy-with-keys.md
 /populate_images
 
 ### User Uploaded Media Files ###
