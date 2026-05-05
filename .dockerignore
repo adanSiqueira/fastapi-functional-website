@@ -1,0 +1,94 @@
+# -------------------------
+# Git
+# -------------------------
+.git/
+
+# -------------------------
+# Environment / Secrets
+# -------------------------
+.env
+.python-version
+
+# -------------------------
+# Python cache / compiled
+# -------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# -------------------------
+# Virtual environments
+# -------------------------
+.venv
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# -------------------------
+# Build / packaging
+# -------------------------
+build/
+dist/
+.eggs/
+*.egg-info/
+*.egg
+
+# -------------------------
+# Logs / coverage / testing
+# -------------------------
+*.log
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.hypothesis/
+
+# -------------------------
+# Database files
+# -------------------------
+*.sqlite3
+*.db
+
+# -------------------------
+# OS files (macOS)
+# -------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# -------------------------
+# Editor / IDE
+# -------------------------
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+.history/
+.ionide
+
+# -------------------------
+# Project-specific exclusions
+# -------------------------
+tests/
+populate_db.py
+/tests/populate_db.md
+/notes
+/docs/vps-deploy-with-keys.md
+/populate_images
+/static/js/utils.md
+/templates/theory-notes
+snippets.txt
+
+# -------------------------
+# User uploads (important!)
+# -------------------------
+media/
