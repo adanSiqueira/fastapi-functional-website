@@ -18,6 +18,7 @@ from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.exceptions import HTTPException as StarletteHTTPException
+from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 from typing import Annotated
 from sqlalchemy import select, func, text
 import models
@@ -39,7 +40,7 @@ async def lifespan(_app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
-# app.mount("/media", StaticFiles(directory="media"), name="media")
+app.add_middleware(ProxyHeadersMiddleware, trusted_hosts="*")
 templates = Jinja2Templates(directory="templates")
 
 # ---------------------------- API endpoints ------------------------------ #

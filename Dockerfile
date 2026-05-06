@@ -39,4 +39,4 @@ RUN useradd -m appuser && chown -R appuser:appuser /app
 USER appuser
 
 # Run app
-CMD ["sh", "-c", "exec uvicorn main:app --host 0.0.0.0 --port $PORT --proxy-headers"]
+CMD ["sh", "-c", "exec uvicorn main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'"]
