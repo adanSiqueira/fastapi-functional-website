@@ -27,6 +27,10 @@ A full-stack blog application built with **FastAPI**, deployed on **AWS ECS**, b
 
 The codebase is designed as a reusable blueprint for systems requiring user accounts, authentication, content creation, and full CRUD — adaptable to forums, news platforms, social feeds, and more.
 
+<p align="center">
+  <img src="./docs/demo.gif" />
+</p>
+
 ---
 
 ## Table of Contents
